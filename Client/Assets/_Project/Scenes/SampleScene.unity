@@ -49969,7 +49969,7 @@ MonoBehaviour:
       Data4: -697689229
     Path: event:/Music
   Event: 
-  EventPlayTrigger: 0
+  EventPlayTrigger: 1
   EventStopTrigger: 0
   AllowFadeout: 1
   TriggerOnce: 0
