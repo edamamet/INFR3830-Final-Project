@@ -11,4 +11,14 @@ public static class CanvasGroupExtensions {
         canvasGroup.blocksRaycasts = false;
         canvasGroup.interactable = false;
     }
+    
+    public static void Enable(this CanvasGroup canvasGroup) {
+        canvasGroup.blocksRaycasts = true;
+        canvasGroup.interactable = true;
+    }
+    
+    public static void Disable(this CanvasGroup canvasGroup) {
+        canvasGroup.blocksRaycasts = false;
+        canvasGroup.interactable = false;
+    }
 }

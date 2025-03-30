@@ -53,7 +53,9 @@ public class PlayerMovement : MonoBehaviour {
             stateDirection = CharacterStateDirection.Front;
             hasInputted = true;
         }
-        if (Keyboard.current.eKey.wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame) {
+        if (Keyboard.current.eKey.wasPressedThisFrame
+            || Keyboard.current.spaceKey.wasPressedThisFrame
+            || Mouse.current.leftButton.wasPressedThisFrame) {
             stateType = CharacterStateType.Interact;
             hasInputted = true;
             interact.Interact();

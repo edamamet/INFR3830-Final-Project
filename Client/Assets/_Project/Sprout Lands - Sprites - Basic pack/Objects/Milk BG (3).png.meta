@@ -1,0 +1,819 @@
+fileFormatVersion: 2
+guid: 1c40509f4210ccb4b9d7e900f3f6ffd5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4014091588779049137
+    second: Milk BG (3)_0
+  - first:
+      213: -2555803037873606549
+    second: Milk BG (3)_1
+  - first:
+      213: -2372208696967826126
+    second: Milk BG (3)_2
+  - first:
+      213: 3124198813070889308
+    second: Milk BG (3)_3
+  - first:
+      213: 7824888725750165777
+    second: Milk BG (3)_4
+  - first:
+      213: -1047385237985006128
+    second: Milk BG (3)_5
+  - first:
+      213: -1649317822853333080
+    second: Milk BG (3)_6
+  - first:
+      213: -4826350653756547566
+    second: Milk BG (3)_7
+  - first:
+      213: 8939198990972042931
+    second: Milk BG (3)_8
+  - first:
+      213: 5961943505482123124
+    second: Milk BG (3)_9
+  - first:
+      213: 6802962213303201913
+    second: Milk BG (3)_10
+  - first:
+      213: -2545342557891981586
+    second: Milk BG (3)_11
+  - first:
+      213: 1634306080352108033
+    second: Milk BG (3)_12
+  - first:
+      213: 6873864759404447489
+    second: Milk BG (3)_13
+  - first:
+      213: -2870521074668560115
+    second: Milk BG (3)_14
+  - first:
+      213: -2758437968343047601
+    second: Milk BG (3)_15
+  - first:
+      213: -3518187087268502420
+    second: Milk BG (3)_16
+  - first:
+      213: 3225862141356263138
+    second: Milk BG (3)_17
+  - first:
+      213: -3502369013670208941
+    second: Milk BG (3)_18
+  - first:
+      213: -1784580175990715805
+    second: Milk BG (3)_19
+  - first:
+      213: 1206348264048102258
+    second: Milk BG (3)_20
+  - first:
+      213: -807693896369836161
+    second: Milk BG (3)_21
+  - first:
+      213: -8520447305811996342
+    second: Milk BG (3)_22
+  - first:
+      213: -3823057941644040254
+    second: Milk BG (3)_23
+  - first:
+      213: 1284614747992407501
+    second: Milk BG (3)_24
+  - first:
+      213: 6921597967605153293
+    second: Milk BG (3)_25
+  - first:
+      213: -9141806783381578423
+    second: Milk BG (3)_26
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Milk BG (3)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 444
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4ff0f2b7f41b48c0800000000000000
+      internalID: -4014091588779049137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Milk BG (3)_1
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 444
+        width: 97
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b60fda3ada6f78cd0800000000000000
+      internalID: -2555803037873606549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Milk BG (3)_2
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 444
+        width: 97
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 235f32432c8341fd0800000000000000
+      internalID: -2372208696967826126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Milk BG (3)_3
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 444
+        width: 97
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5199cc84426b5b20800000000000000
+      internalID: 3124198813070889308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Milk BG (3)_4
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 444
+        width: 97
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1113c4986d6979c60800000000000000
+      internalID: 7824888725750165777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Milk BG (3)_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 336
+        width: 48
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0dd6ae2eca0f671f0800000000000000
+      internalID: -1047385237985006128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Milk BG (3)_6
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 336
+        width: 97
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8af3b17bd227c19e0800000000000000
+      internalID: -1649317822853333080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Milk BG (3)_7
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 336
+        width: 97
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21edd59c6ab550db0800000000000000
+      internalID: -4826350653756547566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Milk BG (3)_8
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 336
+        width: 97
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3be3b61de1a6e0c70800000000000000
+      internalID: 8939198990972042931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Milk BG (3)_9
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 336
+        width: 97
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 477853fc7041db250800000000000000
+      internalID: 5961943505482123124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Milk BG (3)_10
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 337
+        width: 49
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 970b750e61af86e50800000000000000
+      internalID: 6802962213303201913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Milk BG (3)_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 228
+        width: 96
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eee0a2ded602dacd0800000000000000
+      internalID: -2545342557891981586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Milk BG (3)_12
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 228
+        width: 97
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10ef5ad98b83ea610800000000000000
+      internalID: 1634306080352108033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Milk BG (3)_13
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 228
+        width: 97
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 107c062549fd46f50800000000000000
+      internalID: 6873864759404447489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Milk BG (3)_14
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 228
+        width: 97
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d01ab109a4cd928d0800000000000000
+      internalID: -2870521074668560115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Milk BG (3)_15
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 228
+        width: 97
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4266f9584f08b9d0800000000000000
+      internalID: -2758437968343047601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Milk BG (3)_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 120
+        width: 48
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c64aef9fb73ec2fc0800000000000000
+      internalID: -3518187087268502420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Milk BG (3)_17
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 120
+        width: 97
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e6cbe5b68094cc20800000000000000
+      internalID: 3225862141356263138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Milk BG (3)_18
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 120
+        width: 97
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35a1adb30f5156fc0800000000000000
+      internalID: -3502369013670208941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Milk BG (3)_19
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 120
+        width: 97
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36a8ed8f8c5eb37e0800000000000000
+      internalID: -1784580175990715805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Milk BG (3)_20
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 120
+        width: 97
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27b0ff9ca5fcdb010800000000000000
+      internalID: 1206348264048102258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Milk BG (3)_21
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 121
+        width: 49
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7fef9b3eae7ac4f0800000000000000
+      internalID: -807693896369836161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Milk BG (3)_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 12
+        width: 96
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4154a1915a41c980800000000000000
+      internalID: -8520447305811996342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Milk BG (3)_23
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 12
+        width: 97
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c72298be05c1fac0800000000000000
+      internalID: -3823057941644040254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Milk BG (3)_24
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 12
+        width: 97
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcdb05f9e4ed3d110800000000000000
+      internalID: 1284614747992407501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Milk BG (3)_25
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 12
+        width: 97
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0ebb29eda47e0060800000000000000
+      internalID: 6921597967605153293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Milk BG (3)_26
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 12
+        width: 97
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94dd8477a27c12180800000000000000
+      internalID: -9141806783381578423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Milk BG (3)_0: -4014091588779049137
+      Milk BG (3)_1: -2555803037873606549
+      Milk BG (3)_10: 6802962213303201913
+      Milk BG (3)_11: -2545342557891981586
+      Milk BG (3)_12: 1634306080352108033
+      Milk BG (3)_13: 6873864759404447489
+      Milk BG (3)_14: -2870521074668560115
+      Milk BG (3)_15: -2758437968343047601
+      Milk BG (3)_16: -3518187087268502420
+      Milk BG (3)_17: 3225862141356263138
+      Milk BG (3)_18: -3502369013670208941
+      Milk BG (3)_19: -1784580175990715805
+      Milk BG (3)_2: -2372208696967826126
+      Milk BG (3)_20: 1206348264048102258
+      Milk BG (3)_21: -807693896369836161
+      Milk BG (3)_22: -8520447305811996342
+      Milk BG (3)_23: -3823057941644040254
+      Milk BG (3)_24: 1284614747992407501
+      Milk BG (3)_25: 6921597967605153293
+      Milk BG (3)_26: -9141806783381578423
+      Milk BG (3)_3: 3124198813070889308
+      Milk BG (3)_4: 7824888725750165777
+      Milk BG (3)_5: -1047385237985006128
+      Milk BG (3)_6: -1649317822853333080
+      Milk BG (3)_7: -4826350653756547566
+      Milk BG (3)_8: 8939198990972042931
+      Milk BG (3)_9: 5961943505482123124
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
