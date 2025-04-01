@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{3452d4e3-6306-444b-bc47-6fa236718aaa}">
 		<property name="name">
-			<value>Menu</value>
+			<value>Menu Music</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
@@ -53,7 +53,7 @@
 			<destination>{e4ad7f11-9ec4-4922-b7be-0029ff44caf5}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{44bec5f4-1f12-4081-ab95-8edea3aa70fc}</destination>
+			<destination>{e1c15617-0fcb-427f-bd19-ce9910d14080}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{4f9c8016-edda-4cba-8aa8-5e3114bc0714}" />

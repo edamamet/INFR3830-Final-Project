@@ -12,6 +12,7 @@ namespace _Project._Scripts {
         [SerializeField] PregameMenuHost pregameMenuHost;
         [SerializeField] ModeSelectMenu modeSelectMenu;
         [SerializeField] LobbyMenu lobbyMenu;
+        [SerializeField] SettingsMenu settingsMenu;
 
         [SerializeField] EventReference clickSound;
         readonly Stack<IMenu> menuStack = new();
@@ -21,11 +22,13 @@ namespace _Project._Scripts {
             pregameMenuHost.gameObject.SetActive(true);
             modeSelectMenu.gameObject.SetActive(true);
             lobbyMenu.gameObject.SetActive(true);
+            settingsMenu.gameObject.SetActive(true);
 
             homeMenu.ForceHide();
             pregameMenuHost.ForceHide();
             modeSelectMenu.ForceHide();
             lobbyMenu.ForceHide();
+            settingsMenu.ForceHide();
 
             PushMenu(homeMenu);
         }
@@ -51,6 +54,9 @@ namespace _Project._Scripts {
 
         public void PushLobbyMenu() {
             PushMenu(lobbyMenu);
+        }
+        public void PushSettingsMenu() {
+            PushMenu(settingsMenu);
         }
 
         public void PushMenu(IMenu menu) {

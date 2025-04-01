@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System.Collections.Generic;
+using System.Text;
+using UnityEngine;
 public struct Message {
     public MessageType Type;
     public int ID;
@@ -12,15 +14,24 @@ public struct Message {
     public int Encode(byte[] buffer) {
         buffer[0] = (byte)Type;
         buffer[1] = (byte)ID;
-        int bytes = Encoding.UTF8.GetBytes(Content, 0, Content.Length, buffer, 2);
+        int bytes = Encoding.ASCII.GetBytes(Content + '\\', 0, Content.Length, buffer, 2);
         return bytes + 2;
     }
 
-    public static Message Decode(byte[] buffer, int size) {
-        var type = (MessageType)buffer[0];
-        int id = buffer[1];
-        string content = Encoding.UTF8.GetString(buffer, 2, size - 2);
-        return new(type, id, content);
+    public static void Decode(byte[] buffer, Queue<Message> messageQueue, int size) {
+        int index = 0;
+        while(index < size) {
+            var type = (MessageType)buffer[index];
+            int id = buffer[index + 1];
+            string content = Encoding.ASCII.GetString(buffer, index + 2, size - index - 2);
+            index = content.IndexOf('\\');
+            if (index >= 0) {
+                Debug.Log(content);
+                content = content.Substring(0, index);
+                index += 2;
+            }
+            messageQueue.Enqueue(new(type, id, content));
+        }
     }
 }
 
