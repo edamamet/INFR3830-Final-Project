@@ -14,22 +14,32 @@ public struct Message {
     public int Encode(byte[] buffer) {
         buffer[0] = (byte)Type;
         buffer[1] = (byte)ID;
-        int bytes = Encoding.ASCII.GetBytes(Content + '\\', 0, Content.Length, buffer, 2);
+        int bytes = Encoding.ASCII.GetBytes(Content + '\\', 0, Content.Length + 1, buffer, 2);
         return bytes + 2;
     }
 
     public static void Decode(byte[] buffer, Queue<Message> messageQueue, int size) {
+        Debug.Log($"decoding... {size}");
         int index = 0;
-        while(index < size) {
+        while(index > -1 && index < size) {
+            Debug.Log("INDEX: " + index);
             var type = (MessageType)buffer[index];
             int id = buffer[index + 1];
             string content = Encoding.ASCII.GetString(buffer, index + 2, size - index - 2);
+            Debug.Log("content: " + content + "::: " + content.Length);
             index = content.IndexOf('\\');
             if (index >= 0) {
-                Debug.Log(content);
-                content = content.Substring(0, index);
-                index += 2;
+                if (content.Length > 1) {
+                    content = content.Substring(0, index);
+                    Debug.Log(content);
+                    index += 3;
+                } else {
+                    Debug.Log("Content length is 1");
+                    index = int.MaxValue;
+                }
+                Debug.Log($"Index is now {index}");
             }
+            Debug.Log("Enqueueing...");
             messageQueue.Enqueue(new(type, id, content));
         }
     }

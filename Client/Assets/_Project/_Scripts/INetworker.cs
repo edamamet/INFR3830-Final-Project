@@ -16,13 +16,21 @@ public class HostNetworker : INetworker {
     byte[] buffer = new byte[1024];
     Socket server;
     Socket[] tcpClients;
+    string[] playerNames;
     Queue<Message> sendQueue = null, receiveQueue = null;
     public event Action<Message> OnMessagePublished = delegate { };
+    public delegate void RequestPlayerNamesDelegate(ref string[] playerNameBuffer);
+    public readonly RequestPlayerNamesDelegate RequestPlayerNames;
+
+    public HostNetworker(RequestPlayerNamesDelegate requestPlayerNames) {
+        RequestPlayerNames = requestPlayerNames;
+    }
     public void Initialize(IPAddress address, string name) {
         Debug.Log("Initializing Host");
 
         buffer = new byte[1024];
         tcpClients = new Socket[4];
+        playerNames = new string[4];
         sendQueue = new();
         receiveQueue = new();
 
@@ -47,12 +55,22 @@ public class HostNetworker : INetworker {
     void OnReceive(IAsyncResult result) {
         if (result.AsyncState is not Socket client) return;
         int bytes = client.EndReceive(result);
+        if (bytes == 0) {
+            Debug.Log($"Received a blank message. Disconnecting from {client.RemoteEndPoint}");
+            client.Close();
+            return;
+        }
         Message.Decode(buffer, receiveQueue, bytes);
-        foreach (Message message in receiveQueue) {
-            Debug.Log($"Received {bytes} bytes: {message.Type} from {client.RemoteEndPoint}: {message.Content}");
+        Debug.Log($"Received {bytes} bytes as {receiveQueue.Count} messages from {client.RemoteEndPoint}");
+        while(receiveQueue.Count > 0) {
+            Message message = receiveQueue.Dequeue();
+            Debug.Log($"  >  {message.Type} from {client.RemoteEndPoint}: {message.Content}");
             switch(message.Type) {
                 case MessageType.RequestJoin:
                     HandleRequestJoin(client, message.Content);
+                    break;
+                case MessageType.RequestPlayers:
+                    HandleRequestPlayers();
                     break;
                 default:
                     Debug.Log($"Unhandled message of type: {message.Type}");
@@ -60,6 +78,14 @@ public class HostNetworker : INetworker {
             }
         }
         client.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, OnReceive, client);
+    }
+
+    void HandleRequestPlayers() {
+        RequestPlayerNames(ref playerNames);
+        string content = string.Join("/", playerNames);
+        Message response = new(MessageType.RequestPlayers, 0, content);
+        QueueMessage(response);
+        OnMessagePublished(response);
     }
 
     void HandleRequestJoin(Socket client, string name) {
@@ -72,6 +98,7 @@ public class HostNetworker : INetworker {
     }
 
     void QueueMessage(Message message) {
+        Debug.Log($"Message queued: {message.ID}::{message.Type} {message.Content}");
         sendQueue.Enqueue(message);
     }
 
@@ -85,7 +112,7 @@ public class HostNetworker : INetworker {
                     Socket tcpClient = tcpClients[i];
                     if (tcpClient != null) {
                         await tcpClient.SendAsync(segment, SocketFlags.None);
-                        Debug.Log($"Sent {bytes} bytes to {message.Type}: {message.Content}");
+                        Debug.Log($"Sent {bytes} bytes to {tcpClient}: {message.ID}{message.Type}: {message.Content}");
                     }
                 }
             }
@@ -132,12 +159,28 @@ public class ClientNetworker : INetworker {
         Debug.Log("Sent");
     }
     void OnReceive(IAsyncResult result) {
-        int received = client.EndReceive(result);
-        Message.Decode(buffer, receiveQueue, received);
-        foreach (Message message in receiveQueue) {
-            OnMessagePublished(message);
-            Debug.Log($"Received {received} bytes: {message.Type} {message.Content}");
-            client.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, OnReceive, null);
+        try {
+            int received = client.EndReceive(result);
+            if (received == 0) {
+                Debug.Log("Received 0 bytes. The server has disconnected.");
+                try {
+                    client.Close();
+                } catch {
+                    // ignored (the server may have already tried closing this client)
+                }
+                return;
+            }
+            Debug.Log($"Received {received} bytes");
+            Message.Decode(buffer, receiveQueue, received);
+            while(receiveQueue.Count > 0) {
+                Message message = receiveQueue.Dequeue();
+                OnMessagePublished(message);
+                Debug.Log($"Received {received} bytes: {message.Type} {message.Content}");
+                client.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, OnReceive, null);
+            }
+        } catch (Exception e) {
+            Debug.Log($"Error {e.Message}");
+            client.Close();
         }
     }
 

@@ -23,6 +23,9 @@ namespace _Project._Scripts {
             modeSelectMenu.gameObject.SetActive(true);
             lobbyMenu.gameObject.SetActive(true);
             settingsMenu.gameObject.SetActive(true);
+            
+            // TODO: remove
+            settingsMenu.SetMusicVolume(0);
 
             homeMenu.ForceHide();
             pregameMenuHost.ForceHide();

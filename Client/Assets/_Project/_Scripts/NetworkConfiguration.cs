@@ -9,9 +9,9 @@ public class NetworkConfiguration : MonoBehaviour {
     public INetworker Networker { get; private set; }
     public NetworkEntity[] Entities;
     public string Name;
+    public int ID;
 
     public event Action<int, string> OnPlayerJoined = delegate { };
-    public event Action<string[]> OnRequestPlayers = delegate { };
 
     Queue<Message> messageQueue;
 
@@ -35,7 +35,7 @@ public class NetworkConfiguration : MonoBehaviour {
         messageQueue = new();
         Entities = new NetworkEntity[4];
         Networker = Mode == NetworkMode.Host
-            ? new HostNetworker()
+            ? new HostNetworker(RequestPlayerNames)
             : new ClientNetworker();
         Networker.OnMessagePublished += OnMessagePublished;
         Networker.Initialize(address, name);
@@ -63,8 +63,11 @@ public class NetworkConfiguration : MonoBehaviour {
                     string[] names = message.Content.Split('/');
                     for (var i = 0; i < 4; i++) {
                         entityNames[i] = i < names.Length ? names[i] : string.Empty;
+                        if (Entities[i] == null && !string.IsNullOrEmpty(entityNames[i])) {
+                            Entities[i] = new(i, Vector2.zero, entityNames[i]);
+                            OnPlayerJoined(i, entityNames[i]);
+                        }
                     }
-                    OnRequestPlayers(entityNames);
                     break;
                 case MessageType.UserLeft:
                 case MessageType.StartGame:
@@ -78,5 +81,11 @@ public class NetworkConfiguration : MonoBehaviour {
         // we can't actually do anything here since we're in async land.
         // queue up the message for processing in the main thread.
         messageQueue.Enqueue(message);
+    }
+
+    public void RequestPlayerNames(ref string[] playerNames) {
+        for (int i = 0; i < 4; i++) {
+            playerNames[i] = Entities[i]?.Name ?? string.Empty;
+        }
     }
 }
