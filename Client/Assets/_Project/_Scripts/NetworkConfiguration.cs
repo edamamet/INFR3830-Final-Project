@@ -12,6 +12,8 @@ public class NetworkConfiguration : MonoBehaviour {
     public int ID;
 
     public event Action<int, string> OnPlayerJoined = delegate { };
+    public event Action<float, NetworkEntity[]> OnGameUpdate = delegate { };
+    public event Action<int, Vector2> OnClientUpdate = delegate { };
 
     Queue<Message> messageQueue;
 
@@ -54,6 +56,10 @@ public class NetworkConfiguration : MonoBehaviour {
             Debug.Log($"Processing message: {message.Type}, {message.ID}, {message.Content}");
             switch(message.Type) {
                 case MessageType.UserJoined:
+                    Debug.Log($"{Mode}, {ID}, {message.ID}");
+                    if (Mode == NetworkMode.Client && ID == 0) {
+                        ID = message.ID;
+                    }
                     Entities[message.ID] = new(message.ID, Vector2.zero, message.Content);
                     OnPlayerJoined(message.ID, message.Content);
                     break;
@@ -73,6 +79,22 @@ public class NetworkConfiguration : MonoBehaviour {
                 case MessageType.StartGame:
                     Bootstrapper.ReplaceScene(1,3);
                     break;
+                case MessageType.GameUpdate:
+                    string[] parts = message.Content.Split('/');
+                    var time = float.Parse(parts[0]);
+                    for (var i = 0; i < 4; i++) {
+                        if (Entities[i] == null) continue;
+                        string[] pos = parts[i + 1].Split(',');
+                        Entities[i].Position = new(float.Parse(pos[0]), float.Parse(pos[1]));
+                    }
+                    OnGameUpdate(time, Entities);
+                    break;
+                case MessageType.ClientUpdate:
+                    string[] values = message.Content.Split(',');
+                    var x = float.Parse(values[0]);
+                    var y = float.Parse(values[1]);
+                    OnClientUpdate(message.ID, new(x,y));
+                    break;
                 default:
                     break;
             }
@@ -86,8 +108,13 @@ public class NetworkConfiguration : MonoBehaviour {
     }
 
     public void RequestPlayerNames(ref string[] playerNames) {
-        for (int i = 0; i < 4; i++) {
+        for (var i = 0; i < 4; i++) {
             playerNames[i] = Entities[i]?.Name ?? string.Empty;
         }
+    }
+
+    public void UpdateGame(IUpdater updater, GameInfo gameInfo) {
+        var message = updater.Package(gameInfo, ID);
+        Networker.MakeRequest(message);
     }
 }

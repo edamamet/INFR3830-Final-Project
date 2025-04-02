@@ -72,7 +72,9 @@ public class HostNetworker : INetworker {
                     HandleRequestPlayers();
                     break;
                 default:
-                    Debug.Log($"Unhandled message of type: {message.Type}");
+                    Debug.Log($"Performing default action for {message.Type}");
+                    message.ID = Array.IndexOf(tcpClients, client);
+                    OnMessagePublished(message);
                     break;
             }
         }
@@ -97,7 +99,7 @@ public class HostNetworker : INetworker {
     }
 
     void QueueMessage(Message message) {
-        Debug.Log($"Message queued: {message.ID}::{message.Type} {message.Content}");
+        Debug.Log($"Message queued: [{message.ID}] {message.Type}: {message.Content}");
         sendQueue.Enqueue(message);
     }
 
@@ -144,6 +146,7 @@ public class ClientNetworker : INetworker {
         this.name = name;
         client = new(address.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
         client.BeginConnect(new IPEndPoint(address, 8888), OnConnect, null);
+        _ = SendLoop();
     }
     void OnConnect(IAsyncResult result) {
         client.EndConnect(result);
@@ -152,7 +155,6 @@ public class ClientNetworker : INetworker {
         QueueMessage(new(MessageType.RequestJoin, 0, name));
         QueueMessage(new(MessageType.RequestPlayers, 0, string.Empty));
         client.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, OnReceive, null);
-        _ = SendLoop();
     }
     void OnSend(Message message) {
         Debug.Log("Sent");
@@ -185,6 +187,7 @@ public class ClientNetworker : INetworker {
 
     void QueueMessage(Message message) {
         sendQueue.Enqueue(message);
+        Debug.Log($"Message queued: [{message.ID}] {message.Type}: {message.Content}\n  >  {sendQueue.Count} messages in queue");
     }
 
     async Task SendLoop() {
@@ -193,7 +196,7 @@ public class ClientNetworker : INetworker {
                 Message message = sendQueue.Dequeue();
                 int bytes = message.Encode(buffer);
                 ArraySegment<byte> segment = new(buffer, 0, bytes);
-                Debug.Log($"Sending {bytes} bytes: {message.Type} {message.Content}");
+                Debug.Log($"Sending {bytes} bytes: [{message.ID}] {message.Type} {message.Content}");
                 await client.SendAsync(segment, SocketFlags.None);
                 OnSend(message);
             }
@@ -208,6 +211,7 @@ public class ClientNetworker : INetworker {
     }
 
     public void MakeRequest(Message message) {
+        Debug.Log("CLIENT REQUEST");
         QueueMessage(message);
     }
 }

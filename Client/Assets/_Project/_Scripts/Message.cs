@@ -19,27 +19,22 @@ public struct Message {
     }
 
     public static void Decode(byte[] buffer, Queue<Message> messageQueue, int size) {
-        Debug.Log($"decoding... {size}");
+        Debug.Log($"decoding..");
         int index = 0;
         while(index > -1 && index < size) {
-            Debug.Log("INDEX: " + index);
             var type = (MessageType)buffer[index];
             int id = buffer[index + 1];
             string content = Encoding.ASCII.GetString(buffer, index + 2, size - index - 2);
-            Debug.Log("content: " + content + "::: " + content.Length);
             index = content.IndexOf('\\');
             if (index >= 0) {
                 if (content.Length > 1) {
                     content = content.Substring(0, index);
-                    Debug.Log(content);
                     index += 3;
                 } else {
                     Debug.Log("Content length is 1");
                     index = int.MaxValue;
                 }
-                Debug.Log($"Index is now {index}");
             }
-            Debug.Log("Enqueueing...");
             messageQueue.Enqueue(new(type, id, content));
         }
     }
@@ -51,4 +46,7 @@ public enum MessageType : byte {
     UserJoined,
     UserLeft,
     StartGame,
+    EndGame,
+    GameUpdate,
+    ClientUpdate,   
 }
