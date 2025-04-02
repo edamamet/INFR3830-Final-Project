@@ -49,4 +49,6 @@ public enum MessageType : byte {
     EndGame,
     GameUpdate,
     ClientUpdate,   
+    SpawnTreasure,
+    CollectTreasure,
 }

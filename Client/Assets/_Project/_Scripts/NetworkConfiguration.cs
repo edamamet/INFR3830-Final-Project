@@ -14,6 +14,7 @@ public class NetworkConfiguration : MonoBehaviour {
     public event Action<int, string> OnPlayerJoined = delegate { };
     public event Action<float, NetworkEntity[]> OnGameUpdate = delegate { };
     public event Action<int, Vector2> OnClientUpdate = delegate { };
+    public event Action<Guid> OnChestOpened = delegate { };
 
     Queue<Message> messageQueue;
 

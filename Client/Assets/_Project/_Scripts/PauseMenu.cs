@@ -12,6 +12,7 @@ public class PauseMenu : MonoBehaviour, IMenu {
     void Awake() {
         Hide();
         settingsMenu.Hide();
+        IsPaused = false;
     }
 
     void Update() {

@@ -1,13 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 public class GameManager : MonoBehaviour {
     public static GameInfo GameInfo;
     public static IUpdater Updater;
     public static event Action<GameInfo> GameInfoChanged = delegate { };
-
+    
     public bool isActive = false;
 
     [SerializeField] NetworkPlayer playerPrefab, self;
+    [SerializeField] ChestManager chestManager;
 
     NetworkConfiguration Network => NetworkConfiguration.Instance;
 
@@ -19,6 +21,7 @@ public class GameManager : MonoBehaviour {
         if (!Network) return;
         if (Network.Mode == NetworkMode.Host) {
             Network.OnClientUpdate += OnClientUpdate;
+            chestManager.IsActive = true;
         } else {
             Network.OnGameUpdate += OnGameUpdate;
         }

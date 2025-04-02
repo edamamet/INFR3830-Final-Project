@@ -24,7 +24,7 @@ public class PlayerInteract : MonoBehaviour {
         lastPosition = position;
         for (var i = 0; i < hits; i++) {
             Collider2D hit = results[i];
-            hit.GetComponent<Chest>().Open();
+            hit.GetComponent<Chest>().Query();
             Debug.Log(position);
         }
     }
