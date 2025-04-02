@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using FMODUnity;
 using UnityEngine;
@@ -22,7 +21,7 @@ namespace _Project._Scripts {
             modeSelectMenu.gameObject.SetActive(true);
             lobbyMenu.gameObject.SetActive(true);
             settingsMenu.gameObject.SetActive(true);
-            
+
             // TODO: remove
             settingsMenu.SetMusicVolume(0);
 
@@ -88,9 +87,9 @@ namespace _Project._Scripts {
         }
 
         public void StartGame() {
-            Bootstrapper.ReplaceScene(1,3);
+            Bootstrapper.ReplaceScene(1, 3);
         }
-        
+
         public void Quit() {
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;

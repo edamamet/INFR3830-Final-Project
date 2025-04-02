@@ -1,10 +1,8 @@
-﻿using System;
-using FMOD;
+﻿using FMOD;
 using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
 using UnityEngine.UI;
-using Debug = UnityEngine.Debug;
 namespace _Project._Scripts {
     public class SettingsMenu : MonoBehaviour, IMenu {
         [SerializeField] CanvasGroup canvas;

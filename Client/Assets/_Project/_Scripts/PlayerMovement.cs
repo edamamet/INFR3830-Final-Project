@@ -1,4 +1,3 @@
-using System;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -24,7 +23,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     void HandleInput() {
-        if (!canMove) return;
+        if (!canMove || PauseMenu.IsPaused) return;
         var hasInputted = false;
         CharacterStateType stateType = state.Type;
         CharacterStateDirection stateDirection = state.Direction;

@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 namespace _Project._Scripts {
     public class Bootstrapper : MonoBehaviour {

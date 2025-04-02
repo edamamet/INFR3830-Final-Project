@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Linq;
 using System.Net;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 namespace _Project._Scripts {
     public class PregameMenuHost : MonoBehaviour, IMenu {
         [SerializeField] CanvasGroup canvas;
