@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.UI;
 namespace _Project._Scripts {
@@ -32,8 +33,10 @@ namespace _Project._Scripts {
                 NetworkConfiguration.Instance.Networker?.Dispose();
             canvas.Hide();
         }
-        void OnDestroy() {
-            Hide();
+        
+        public void StartGame() {
+            if (NetworkConfiguration.Instance.Mode != NetworkMode.Host) return;
+            NetworkConfiguration.Instance.Networker.MakeRequest(new(MessageType.StartGame, NetworkConfiguration.Instance.ID, string.Empty));
         }
 
         void OnPlayerJoined(int id, string name) {

@@ -77,18 +77,18 @@ namespace _Project._Scripts {
             _ = StartNetworkClientAsync();
         }
         public async Task StartNetworkClientAsync() {
-            await SceneManager.LoadSceneAsync(sceneBuildIndex: 1, LoadSceneMode.Additive);
+            await SceneManager.LoadSceneAsync(sceneBuildIndex: 2, LoadSceneMode.Additive);
         }
 
         public void KillNetworkClient() {
             _ = KillNetworkClientAsync();
         }
         public async Task KillNetworkClientAsync() {
-            await SceneManager.UnloadSceneAsync(sceneBuildIndex: 1, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
+            await SceneManager.UnloadSceneAsync(sceneBuildIndex: 2, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
         }
 
         public void StartGame() {
-            Bootstrapper.ReplaceScene(0,2);
+            Bootstrapper.ReplaceScene(1,3);
         }
         
         public void Quit() {

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using _Project._Scripts;
 using UnityEngine;
 
 public class NetworkConfiguration : MonoBehaviour {
@@ -71,6 +72,8 @@ public class NetworkConfiguration : MonoBehaviour {
                     break;
                 case MessageType.UserLeft:
                 case MessageType.StartGame:
+                    Bootstrapper.ReplaceScene(1,3);
+                    break;
                 default:
                     break;
             }

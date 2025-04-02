@@ -12,7 +12,7 @@ namespace _Project._Scripts {
             await SceneManager.LoadSceneAsync(next, LoadSceneMode.Additive);
         }
         void Awake() {
-            LoadAdditive(0);
+            LoadAdditive(1);
         }
     }
 }
