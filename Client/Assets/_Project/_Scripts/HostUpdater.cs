@@ -31,7 +31,7 @@ public class ClientUpdater : IUpdater {
         gameInfo.Positions = new Vector2[4];
     }
     public void Update(GameInfo gameInfo) {
-        // Do nothing
+        gameInfo.Time -= Time.deltaTime;
     }
     public Message Package(GameInfo gameInfo, int id = 0) {
         sb ??= new();

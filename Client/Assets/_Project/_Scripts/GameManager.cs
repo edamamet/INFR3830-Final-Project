@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
     public static GameInfo GameInfo;
     public static IUpdater Updater;
@@ -21,7 +22,6 @@ public class GameManager : MonoBehaviour {
         if (!Network) return;
         if (Network.Mode == NetworkMode.Host) {
             Network.OnClientUpdate += OnClientUpdate;
-            chestManager.IsActive = true;
         } else {
             Network.OnGameUpdate += OnGameUpdate;
         }
@@ -36,7 +36,12 @@ public class GameManager : MonoBehaviour {
     }
 
     void OnGameUpdate(float time, NetworkEntity[] entities) {
+        Debug.Log("Updating game info");
         GameInfo.Time = time;
+        for (int i = 0; i < entities.Length; i++) {
+            if (entities[i] == null || i == Network.ID) continue;
+            GameInfo.Positions[i] = entities[i].Position;
+        }
         GameInfoChanged(GameInfo);
     }
 
@@ -60,7 +65,8 @@ public class GameManager : MonoBehaviour {
 
         for (int i = 0; i < 4; i++) {
             if (i == Network.ID || Network.Entities[i] == null) continue;
-            NetworkPlayer player = Instantiate(playerPrefab);
+            Debug.Log("Spawning player");
+            NetworkPlayer player = Instantiate(playerPrefab, transform);
             player.ID = i;
         }
 

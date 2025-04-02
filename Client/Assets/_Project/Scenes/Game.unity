@@ -7035,6 +7035,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f33a2fb4e7274c2eb9e8ae0a6b46fdfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: {fileID: 1058949813}
   ID: 0
 --- !u!1 &1071418602
 GameObject:
@@ -12530,7 +12531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cc0e5e5f2b64850b8a4fbb6ef5c7217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interval: 1
+  interval: 0.1
   intervalSettingSlider: {fileID: 1335613348}
   intervalSettingText: {fileID: 1918388281}
 --- !u!4 &1329629292
@@ -12576,7 +12577,6 @@ MonoBehaviour:
   spawnInterval: 1
   chestPrefab: {fileID: 9173782617572328746, guid: 05aae458dc578474fa7a1ae3d01cda96, type: 3}
   floorTilemap: {fileID: 1530161703}
-  IsActive: 1
 --- !u!1 &1335613346
 GameObject:
   m_ObjectHideFlags: 0

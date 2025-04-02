@@ -26,8 +26,6 @@ public class Chest : MonoBehaviour {
         Destroy(gameObject, deathTime);
     }
 
-    public void Start() { }
-
     public void Query() {
         Debug.Log($"Querying chest {ID}");
         if (opened) return;

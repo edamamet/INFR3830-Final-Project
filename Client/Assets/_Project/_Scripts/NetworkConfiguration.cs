@@ -67,7 +67,12 @@ public class NetworkConfiguration : MonoBehaviour {
                 case MessageType.RequestJoin:
                 case MessageType.RequestPlayers:
                     var entityNames = new string[4];
-                    string[] names = message.Content.Split('/');
+                    string[] names;
+                    try {
+                        names = message.Content.Split('/');
+                    } catch {
+                        continue;
+                    }
                     for (var i = 0; i < 4; i++) {
                         entityNames[i] = i < names.Length ? names[i] : string.Empty;
                         if (Entities[i] == null && !string.IsNullOrEmpty(entityNames[i])) {
@@ -75,13 +80,24 @@ public class NetworkConfiguration : MonoBehaviour {
                             OnPlayerJoined(i, entityNames[i]);
                         }
                     }
+                    if (Mode == NetworkMode.Client) {
+                        for (int i = 0; i < 4; i++) {
+                            if (Entities[i] == null) continue;
+                            ID = i;
+                        }
+                    }
                     break;
                 case MessageType.UserLeft:
                 case MessageType.StartGame:
-                    Bootstrapper.ReplaceScene(1,3);
+                    Bootstrapper.ReplaceScene(1, 3);
                     break;
                 case MessageType.GameUpdate:
-                    string[] parts = message.Content.Split('/');
+                    string[] parts;
+                    try {
+                        parts = message.Content.Split('/');
+                    } catch {
+                        continue;
+                    }
                     var time = float.Parse(parts[0]);
                     for (var i = 0; i < 4; i++) {
                         if (Entities[i] == null) continue;
@@ -91,10 +107,15 @@ public class NetworkConfiguration : MonoBehaviour {
                     OnGameUpdate(time, Entities);
                     break;
                 case MessageType.ClientUpdate:
-                    string[] values = message.Content.Split(',');
+                    string[] values;
+                    try {
+                        values = message.Content.Split(',');
+                    } catch {
+                        continue;
+                    }
                     var x = float.Parse(values[0]);
                     var y = float.Parse(values[1]);
-                    OnClientUpdate(message.ID, new(x,y));
+                    OnClientUpdate(message.ID, new(x, y));
                     break;
                 default:
                     break;
