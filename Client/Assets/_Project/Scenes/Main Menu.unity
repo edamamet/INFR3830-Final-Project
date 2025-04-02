@@ -190,6 +190,7 @@ MonoBehaviour:
   - {fileID: 1453195330}
   - {fileID: 1342117081}
   - {fileID: 1595711185}
+  startButton: {fileID: 612010955}
 --- !u!1 &34344725
 GameObject:
   m_ObjectHideFlags: 0
@@ -3663,9 +3664,9 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: _Project._Scripts.PregameMenu, Assembly-CSharp
-          m_MethodName: ValidateInputs
+        - m_Target: {fileID: 1069151227}
+          m_TargetAssemblyTypeName: _Project._Scripts.MainMenu, Assembly-CSharp
+          m_MethodName: StartGame
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Net;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 namespace _Project._Scripts {
     public class PregameMenuHost : MonoBehaviour, IMenu {
         [SerializeField] CanvasGroup canvas;
@@ -18,10 +19,6 @@ namespace _Project._Scripts {
 
         public void ForceShow() => canvas.Show();
         public void ForceHide() => canvas.Hide();
-
-        public void SetName(string value) {
-            NetworkConfiguration.Instance.Name = value;
-        }
 
         public void ValidateInputs() {
             if (string.IsNullOrWhiteSpace(nameInputField.text)

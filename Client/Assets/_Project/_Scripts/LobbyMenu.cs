@@ -1,15 +1,20 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 namespace _Project._Scripts {
     public class LobbyMenu : MonoBehaviour, IMenu {
         [SerializeField] CanvasGroup canvas;
         [SerializeField] LobbyPlayerUI[] playerUis;
+        [SerializeField] Button startButton;
         public void Show() {
             if (NetworkConfiguration.Instance) {
                 NetworkConfiguration.Instance.OnPlayerJoined += OnPlayerJoined;
                 foreach (var playerUi in playerUis) playerUi.Unset();
             }
+            bool isStartButtonActive = NetworkConfiguration.Instance.Mode == NetworkMode.Host;
+            startButton.interactable = isStartButtonActive;
+            startButton.gameObject.SetActive(isStartButtonActive);
             canvas.Show();
         }
         public void Hide() {

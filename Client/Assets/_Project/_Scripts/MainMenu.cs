@@ -5,7 +5,6 @@ using FMODUnity;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 namespace _Project._Scripts {
     public class MainMenu : MonoBehaviour {
         [SerializeField] HomeMenu homeMenu;
@@ -88,6 +87,10 @@ namespace _Project._Scripts {
             await SceneManager.UnloadSceneAsync(sceneBuildIndex: 1, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
         }
 
+        public void StartGame() {
+            Bootstrapper.ReplaceScene(0,2);
+        }
+        
         public void Quit() {
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
