@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{c56fe841-94a4-4ca2-a719-e3c0e8473af1}">
+		<property name="assetPath">
+			<value>ESM_PG_fx_glass_clink_bottle_bounce_cheers_knock_empty_dry_04.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.3480416666666666</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{06c54c8e-8349-4f74-94be-09a2a0a48642}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{d145cfa3-a090-40f8-9918-e17d7019c69c}">
+		<property name="assetPath">
+			<value>Whistle.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.73066666666666669</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{06c54c8e-8349-4f74-94be-09a2a0a48642}</destination>
+		</relationship>
+	</object>
+</objects>
