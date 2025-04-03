@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 using UnityEngine;
 public class HostUpdater : IUpdater {
     StringBuilder sb;
@@ -9,6 +8,9 @@ public class HostUpdater : IUpdater {
     }
     public void Update(GameInfo gameInfo) {
         gameInfo.Time -= Time.deltaTime;
+        if (gameInfo.Time <= 0) {
+            GameManager.RequestHostEndGame();
+        }
     }
     public Message Package(GameInfo gameInfo, int id = 0) {
         sb ??= new();

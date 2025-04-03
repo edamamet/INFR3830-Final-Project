@@ -1,5 +1,4 @@
-﻿using System;
-using DG.Tweening;
+﻿using DG.Tweening;
 using UnityEngine;
 public class Milk : MonoBehaviour {
     [SerializeField] SpriteRenderer spriteRenderer;

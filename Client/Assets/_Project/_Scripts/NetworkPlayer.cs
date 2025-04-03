@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 class NetworkPlayer : MonoBehaviour {
     [SerializeField] CharacterState state;
     public Vector2 Position => transform.position;

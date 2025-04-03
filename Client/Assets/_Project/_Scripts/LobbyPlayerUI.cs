@@ -19,10 +19,14 @@ namespace _Project._Scripts {
         }
 
         public void Set(string name) {
-            playerName.text = name;
-            Color color = image.color;
-            color.a = 1f;
-            image.color = color;
+            try {
+                playerName.text = name;
+                Color color = image.color;
+                color.a = 1f;
+                image.color = color;
+            } catch {
+                return;
+            }
         }
     }
 }

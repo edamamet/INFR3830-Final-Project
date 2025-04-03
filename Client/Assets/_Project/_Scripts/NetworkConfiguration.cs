@@ -16,6 +16,7 @@ public class NetworkConfiguration : MonoBehaviour {
     public event Action<int, Vector2> OnClientUpdate = delegate { };
     public event Action<Guid, Vector2> OnChestSpawned = delegate { };
     public event Action<int, Guid> OnChestOpened = delegate { };
+    public event Action<int[]> OnGameOver = delegate { };
 
     Queue<Message> messageQueue;
 
@@ -150,6 +151,21 @@ public class NetworkConfiguration : MonoBehaviour {
                 case MessageType.CollectChest: {
                     var id = Guid.Parse(message.Content);
                     OnChestOpened(message.ID, id);
+                }
+                    break;
+                case MessageType.EndGame: {
+                    string[] values;
+                    values = message.Content.Split('/');
+                    var scores = new int[4];
+                    for (var i = 0; i < 4; i++) {
+                        if (Entities[i] == null) continue;
+                        try {
+                            scores[i] = int.Parse(values[i]);
+                        } catch {
+                            continue;
+                        }
+                    }
+                    OnGameOver(scores);
                 }
                     break;
                 default:

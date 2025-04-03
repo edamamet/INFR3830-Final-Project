@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 using Random = UnityEngine.Random;
 public class ChestManager : MonoBehaviour {
@@ -34,6 +33,7 @@ public class ChestManager : MonoBehaviour {
     public void RemoveChest(Chest chest) => chests.Remove(chest.ID);
 
     void Update() {
+        ScoreText.text = $"Score: {GameManager.Score}";
         if (!IsHost) return;
         currentTime += Time.deltaTime;
         if (currentTime < spawnInterval) return;

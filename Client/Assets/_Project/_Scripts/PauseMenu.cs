@@ -16,6 +16,7 @@ public class PauseMenu : MonoBehaviour, IMenu {
     }
 
     void Update() {
+        if (GameManager.IsGameOver) return;
         if (Keyboard.current.escapeKey.wasPressedThisFrame) {
             if (menus.Count == 0) {
                 IsPaused = true;

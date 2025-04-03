@@ -35,7 +35,7 @@ public class Chest : MonoBehaviour {
         chestManager.RequestOpenChest(this);
         
         // HACK: This is a hack to make the chest open immediately on the client side
-        chestManager.ScoreText.text = $"Score: {++GameManager.Score}";
+        GameManager.Score++;
         Open();
     }
 }

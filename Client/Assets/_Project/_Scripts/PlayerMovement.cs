@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     void HandleInput() {
-        if (!canMove || PauseMenu.IsPaused) return;
+        if (!canMove || PauseMenu.IsPaused || GameManager.IsGameOver) return;
         var hasInputted = false;
         CharacterStateType stateType = state.Type;
         CharacterStateDirection stateDirection = state.Direction;

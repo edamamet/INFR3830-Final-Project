@@ -1,5 +1,4 @@
-﻿using Unity.Burst.Intrinsics;
-using UnityEngine;
+﻿using UnityEngine;
 public class Interpolator : MonoBehaviour {
     float timeRate, lastReceivedTime;
     Vector2[] lastCachedPositions = new Vector2[4], velocities = new Vector2[4];

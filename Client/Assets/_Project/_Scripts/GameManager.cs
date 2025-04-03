@@ -1,20 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
     public static GameInfo GameInfo;
     public static IUpdater Updater;
     public static event Action<GameInfo> GameInfoChanged = delegate { };
+    static event Action OnGameEnd = delegate { };
+    
 
-    public bool isActive = false;
+    public bool IsActive = false;
+    public static bool IsGameOver = false;
 
     [SerializeField] NetworkPlayer playerPrefab, self;
     [SerializeField] ChestManager chestManager;
+    [SerializeField] GameOverUI gameOverUI;
 
     NetworkConfiguration Network => NetworkConfiguration.Instance;
     public static int Score = 0;
-    int[] scores;
+    static int[] scores;
 
     void Awake() {
         GameInfo = new();
@@ -26,9 +28,11 @@ public class GameManager : MonoBehaviour {
         if (!Network) return;
         if (Network.Mode == NetworkMode.Host) {
             Network.OnClientUpdate += OnClientUpdate;
+            OnGameEnd += HostEndGame;
         } else {
             Network.OnGameUpdate += OnGameUpdate;
             Network.OnChestSpawned += OnChestSpawned;
+            Network.OnGameOver += OnGameOver;
         }
         Network.OnChestOpened += OnChestOpened;
     }
@@ -36,9 +40,11 @@ public class GameManager : MonoBehaviour {
         if (!Network) return;
         if (Network.Mode == NetworkMode.Host) {
             Network.OnClientUpdate -= OnClientUpdate;
+            OnGameEnd -= HostEndGame;
         } else {
             Network.OnGameUpdate -= OnGameUpdate;
             Network.OnChestSpawned -= OnChestSpawned;
+            Network.OnGameOver -= OnGameOver;
         }
         Network.OnChestOpened -= OnChestOpened;
     }
@@ -68,7 +74,7 @@ public class GameManager : MonoBehaviour {
 
     void Start() {
         if (!Network) return;
-        isActive = true;
+        IsActive = true;
         Updater = Network.Mode switch {
             NetworkMode.Host => new HostUpdater(),
             NetworkMode.Client => new ClientUpdater(),
@@ -89,8 +95,27 @@ public class GameManager : MonoBehaviour {
     }
 
     void Update() {
-        if (!isActive) return;
+        if (!IsActive || IsGameOver) return;
         GameInfo.Positions[self.ID] = self.Position;
         Updater.Update(GameInfo);
+    }
+
+    public static void RequestHostEndGame() {
+        OnGameEnd();
+    }
+    void HostEndGame() {
+        var scoreString = string.Join('/', scores);
+        NetworkConfiguration.Instance.Networker.MakeRequest(new(MessageType.EndGame, 0, scoreString));
+        OnGameOver(scores);
+    }
+    void OnGameOver(int[] scoreArray) {
+        scoreArray[0] = Score;
+        IsGameOver = true;
+        GameInfo.Time = 0;
+        for (int i = 0; i < scoreArray.Length; i++) {
+            if (Network.Entities[i] == null) continue;
+            Debug.Log($"{Network.Entities[i].Name} score: {scoreArray[i]}");
+        }
+        gameOverUI.Show(scoreArray);
     }
 }
