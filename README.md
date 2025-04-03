@@ -1,6 +1,8 @@
 # Usage
 
-Head over to the [releases](https://github.com/edamamet/INFR3830-Final-Project/releases/tag/1.0) page to pick up the binary. You can run up to 4 clients
+Head over to the [releases](https://github.com/edamamet/INFR3830-Final-Project/releases/tag/1.0) page to pick up the binary. 
+
+You can run up to 4 clients
 
 ## Controls
 | Bind | Action |
@@ -17,6 +19,7 @@ You will need the following packages:
 # External Assets
 
 The 2D assets are from the [Sprout Lands Asset Pack by Cup Nooble](https://cupnooble.itch.io/sprout-lands-asset-pack)
+
 The SFX were gathered from the [Splice](https://splice.com/) library
 
 # Final remarks
