@@ -15,6 +15,7 @@ public class NetworkConfiguration : MonoBehaviour {
     public event Action<float, NetworkEntity[]> OnGameUpdate = delegate { };
     public event Action<int, Vector2> OnClientUpdate = delegate { };
     public event Action<Guid, Vector2> OnChestSpawned = delegate { };
+    public event Action<int, Guid> OnChestOpened = delegate { };
 
     Queue<Message> messageQueue;
 
@@ -103,7 +104,12 @@ public class NetworkConfiguration : MonoBehaviour {
                     var time = float.Parse(parts[0]);
                     for (var i = 0; i < 4; i++) {
                         if (Entities[i] == null) continue;
-                        string[] pos = parts[i + 1].Split(',');
+                        string[] pos;
+                        try {
+                            pos = parts[i + 1].Split(',');
+                        } catch {
+                            continue;
+                        }
                         float x, y;
                         try {
                             x = float.Parse(pos[0]);
@@ -111,7 +117,7 @@ public class NetworkConfiguration : MonoBehaviour {
                         } catch {
                             continue;
                         }
-                        Entities[i].Position = new(x,y);
+                        Entities[i].Position = new(x, y);
                     }
                     OnGameUpdate(time, Entities);
                 }
@@ -138,7 +144,12 @@ public class NetworkConfiguration : MonoBehaviour {
                     var id = Guid.Parse(values[0]);
                     var x = int.Parse(values[1]);
                     var y = int.Parse(values[2]);
-                    OnChestSpawned(id, new(x,y));
+                    OnChestSpawned(id, new(x, y));
+                }
+                    break;
+                case MessageType.CollectChest: {
+                    var id = Guid.Parse(message.Content);
+                    OnChestOpened(message.ID, id);
                 }
                     break;
                 default:

@@ -6679,7 +6679,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Score: '
+  m_text: 'Score: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7194827ccf302ea4c8d2a81c1e962a55, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 2fada2f275078524493630eb47b15c27, type: 2}
@@ -12577,6 +12577,7 @@ MonoBehaviour:
   spawnInterval: 1
   chestPrefab: {fileID: 9173782617572328746, guid: 05aae458dc578474fa7a1ae3d01cda96, type: 3}
   floorTilemap: {fileID: 1530161703}
+  ScoreText: {fileID: 931676355}
 --- !u!1 &1335613346
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,16 +6,20 @@ public class GameManager : MonoBehaviour {
     public static GameInfo GameInfo;
     public static IUpdater Updater;
     public static event Action<GameInfo> GameInfoChanged = delegate { };
-    
+
     public bool isActive = false;
 
     [SerializeField] NetworkPlayer playerPrefab, self;
     [SerializeField] ChestManager chestManager;
 
     NetworkConfiguration Network => NetworkConfiguration.Instance;
+    public static int Score = 0;
+    int[] scores;
 
     void Awake() {
         GameInfo = new();
+        scores = new int[4];
+        for (var i = 0; i < 4; i++) { scores[i] = 0; }
     }
 
     void OnEnable() {
@@ -26,6 +30,7 @@ public class GameManager : MonoBehaviour {
             Network.OnGameUpdate += OnGameUpdate;
             Network.OnChestSpawned += OnChestSpawned;
         }
+        Network.OnChestOpened += OnChestOpened;
     }
     void OnDisable() {
         if (!Network) return;
@@ -35,6 +40,7 @@ public class GameManager : MonoBehaviour {
             Network.OnGameUpdate -= OnGameUpdate;
             Network.OnChestSpawned -= OnChestSpawned;
         }
+        Network.OnChestOpened -= OnChestOpened;
     }
 
     void OnGameUpdate(float time, NetworkEntity[] entities) {
@@ -54,6 +60,10 @@ public class GameManager : MonoBehaviour {
         Debug.Log($"Setting position for {id} to {position}");
         GameInfo.Positions[id] = position;
         GameInfoChanged(GameInfo);
+    }
+    void OnChestOpened(int id, Guid guid) {
+        chestManager.OpenChest(guid);
+        scores[id]++;
     }
 
     void Start() {

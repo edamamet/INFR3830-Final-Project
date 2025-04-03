@@ -50,5 +50,5 @@ public enum MessageType : byte {
     GameUpdate,
     ClientUpdate,   
     SpawnChest,
-    CollectTreasure,
+    CollectChest,
 }

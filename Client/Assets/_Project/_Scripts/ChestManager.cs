@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
@@ -9,6 +10,9 @@ public class ChestManager : MonoBehaviour {
     [SerializeField] float spawnInterval;
     [SerializeField] Chest chestPrefab;
     [SerializeField] Tilemap floorTilemap;
+    
+    // AHHHHHHHHHHHHHHHHHHH
+    [SerializeField] public TextMeshProUGUI ScoreText;
     Dictionary<Guid, Chest> chests = new();
     List<Vector3Int> spawnPoints = new();
     NetworkConfiguration Network => NetworkConfiguration.Instance;
@@ -18,7 +22,7 @@ public class ChestManager : MonoBehaviour {
     void Awake() {
         chests ??= new();
         chests.Clear();
-        
+
         foreach (Vector3Int pos in floorTilemap.cellBounds.allPositionsWithin) {
             if (floorTilemap.HasTile(pos)) {
                 spawnPoints.Add(pos);
@@ -50,5 +54,13 @@ public class ChestManager : MonoBehaviour {
     public void SpawnChest(Guid id, Vector2 position) {
         Chest chest = Instantiate(chestPrefab, position, Quaternion.identity, transform);
         chest.Initialize(this, id);
+    }
+    public void RequestOpenChest(Chest chest) {
+        Network.Networker.MakeRequest(new(MessageType.CollectChest, Network.ID, chest.ID.ToString()));
+    }
+    public void OpenChest(Guid id) {
+        if (!chests.TryGetValue(id, out Chest chest)) return;
+        chest.Open();
+        RemoveChest(chest);
     }
 }

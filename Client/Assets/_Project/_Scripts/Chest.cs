@@ -8,10 +8,12 @@ public class Chest : MonoBehaviour {
     [SerializeField] float deathTime;
     [SerializeField] EventReference openSound;
     [SerializeField] Milk milkPrefab;
+    ChestManager chestManager;
     public Guid ID { get; private set; }
 
     public void Initialize(ChestManager chestManager) => Initialize(chestManager, Guid.NewGuid());
     public void Initialize(ChestManager chestManager, Guid guid) {
+        this.chestManager = chestManager;
         ID = guid;
         chestManager.RegisterChest(this);
         opened = false;
@@ -30,6 +32,10 @@ public class Chest : MonoBehaviour {
     public void Query() {
         Debug.Log($"Querying chest {ID}");
         if (opened) return;
+        chestManager.RequestOpenChest(this);
+        
+        // HACK: This is a hack to make the chest open immediately on the client side
+        chestManager.ScoreText.text = $"Score: {++GameManager.Score}";
         Open();
     }
 }
