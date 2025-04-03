@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour {
             Network.OnClientUpdate += OnClientUpdate;
         } else {
             Network.OnGameUpdate += OnGameUpdate;
+            Network.OnChestSpawned += OnChestSpawned;
         }
     }
     void OnDisable() {
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour {
             Network.OnClientUpdate -= OnClientUpdate;
         } else {
             Network.OnGameUpdate -= OnGameUpdate;
+            Network.OnChestSpawned -= OnChestSpawned;
         }
     }
 
@@ -45,6 +47,9 @@ public class GameManager : MonoBehaviour {
         GameInfoChanged(GameInfo);
     }
 
+    void OnChestSpawned(Guid id, Vector2 position) {
+        chestManager.SpawnChest(id, position);
+    }
     void OnClientUpdate(int id, Vector2 position) {
         Debug.Log($"Setting position for {id} to {position}");
         GameInfo.Positions[id] = position;

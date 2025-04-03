@@ -14,7 +14,7 @@ public class NetworkConfiguration : MonoBehaviour {
     public event Action<int, string> OnPlayerJoined = delegate { };
     public event Action<float, NetworkEntity[]> OnGameUpdate = delegate { };
     public event Action<int, Vector2> OnClientUpdate = delegate { };
-    public event Action<Guid> OnChestOpened = delegate { };
+    public event Action<Guid, Vector2> OnChestSpawned = delegate { };
 
     Queue<Message> messageQueue;
 
@@ -56,16 +56,17 @@ public class NetworkConfiguration : MonoBehaviour {
             Message message = messageQueue.Dequeue();
             Debug.Log($"Processing message: {message.Type}, {message.ID}, {message.Content}");
             switch(message.Type) {
-                case MessageType.UserJoined:
+                case MessageType.UserJoined: {
                     Debug.Log($"{Mode}, {ID}, {message.ID}");
                     if (Mode == NetworkMode.Client && ID == 0) {
                         ID = message.ID;
                     }
                     Entities[message.ID] = new(message.ID, Vector2.zero, message.Content);
                     OnPlayerJoined(message.ID, message.Content);
+                }
                     break;
                 case MessageType.RequestJoin:
-                case MessageType.RequestPlayers:
+                case MessageType.RequestPlayers: {
                     var entityNames = new string[4];
                     string[] names;
                     try {
@@ -86,12 +87,13 @@ public class NetworkConfiguration : MonoBehaviour {
                             ID = i;
                         }
                     }
+                }
                     break;
                 case MessageType.UserLeft:
                 case MessageType.StartGame:
                     Bootstrapper.ReplaceScene(1, 3);
                     break;
-                case MessageType.GameUpdate:
+                case MessageType.GameUpdate: {
                     string[] parts;
                     try {
                         parts = message.Content.Split('/');
@@ -102,11 +104,19 @@ public class NetworkConfiguration : MonoBehaviour {
                     for (var i = 0; i < 4; i++) {
                         if (Entities[i] == null) continue;
                         string[] pos = parts[i + 1].Split(',');
-                        Entities[i].Position = new(float.Parse(pos[0]), float.Parse(pos[1]));
+                        float x, y;
+                        try {
+                            x = float.Parse(pos[0]);
+                            y = float.Parse(pos[1]);
+                        } catch {
+                            continue;
+                        }
+                        Entities[i].Position = new(x,y);
                     }
                     OnGameUpdate(time, Entities);
+                }
                     break;
-                case MessageType.ClientUpdate:
+                case MessageType.ClientUpdate: {
                     string[] values;
                     try {
                         values = message.Content.Split(',');
@@ -116,6 +126,20 @@ public class NetworkConfiguration : MonoBehaviour {
                     var x = float.Parse(values[0]);
                     var y = float.Parse(values[1]);
                     OnClientUpdate(message.ID, new(x, y));
+                }
+                    break;
+                case MessageType.SpawnChest: {
+                    string[] values;
+                    try {
+                        values = message.Content.Split('/');
+                    } catch {
+                        continue;
+                    }
+                    var id = Guid.Parse(values[0]);
+                    var x = int.Parse(values[1]);
+                    var y = int.Parse(values[2]);
+                    OnChestSpawned(id, new(x,y));
+                }
                     break;
                 default:
                     break;

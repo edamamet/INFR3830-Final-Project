@@ -46,4 +46,9 @@ public class ChestManager : MonoBehaviour {
         sb.Append(spawnPos.y);
         Network.Networker.MakeRequest(new(MessageType.SpawnChest, 0, sb.ToString()));
     }
+
+    public void SpawnChest(Guid id, Vector2 position) {
+        Chest chest = Instantiate(chestPrefab, position, Quaternion.identity, transform);
+        chest.Initialize(this, id);
+    }
 }

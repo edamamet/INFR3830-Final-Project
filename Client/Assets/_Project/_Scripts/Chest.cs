@@ -10,8 +10,9 @@ public class Chest : MonoBehaviour {
     [SerializeField] Milk milkPrefab;
     public Guid ID { get; private set; }
 
-    public void Initialize(ChestManager chestManager) {
-        ID = Guid.NewGuid();
+    public void Initialize(ChestManager chestManager) => Initialize(chestManager, Guid.NewGuid());
+    public void Initialize(ChestManager chestManager, Guid guid) {
+        ID = guid;
         chestManager.RegisterChest(this);
         opened = false;
     }
