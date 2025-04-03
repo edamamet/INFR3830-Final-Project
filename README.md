@@ -4,6 +4,9 @@ Head over to the [releases](https://github.com/edamamet/INFR3830-Final-Project/r
 
 You can run up to 4 clients
 
+> [!IMPORTANT]  
+> There are a few stability issues with the build. They are all outlined in the [releases](https://github.com/edamamet/INFR3830-Final-Project/releases/tag/1.0) page
+
 ## Controls
 | Bind | Action |
 | --- | --- |
