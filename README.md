@@ -26,5 +26,6 @@ The 2D assets are from the [Sprout Lands Asset Pack by Cup Nooble](https://cupno
 The SFX were gathered from the [Splice](https://splice.com/) library
 
 # Final remarks
+I chose the Ranking System for my 20%.
 
 The music was made by me.
